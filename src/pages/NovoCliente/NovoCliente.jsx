@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
@@ -6,7 +7,13 @@ export function NovoCliente() {
     const { register, handleSubmit } = useForm();
 
     function onSubmit(data) {
-        console.log(data);
+        axios.post("http://localhost:3001/clientes", data)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     return (
